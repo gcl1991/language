@@ -1,0 +1,42 @@
+编译
+javac lambdasinaction/chap9/Resizable.java
+javac lambdasinaction/chap9/Ellipse.java
+javac lambdasinaction/chap9/Utils.java
+javac lambdasinaction/chap9/Game.java
+运行
+java lambdasinaction.chap9.Game
+
+增加抽象方法setRelativeSize
+lambdasinaction/chap9/Resizable.java
+编译
+javac lambdasinaction/chap9/Resizable.java
+运行
+java lambdasinaction.chap9.Game
+
+增加方法调用setRelativeSize
+lambdasinaction/chap9/Utils.java
+编译
+javac lambdasinaction/chap9/Utils.java
+运行，将报错
+java lambdasinaction.chap9.Game
+编译,将报错
+javac lambdasinaction/chap9/Ellipse.java
+
+
+增加默认方法setRelativeSize
+lambdasinaction/chap9/Resizable.java
+编译
+javac lambdasinaction/chap9/Resizable.java
+运行
+java lambdasinaction.chap9.Game
+
+增加方法调用setRelativeSize
+lambdasinaction/chap9/Utils.java
+编译
+javac lambdasinaction/chap9/Utils.java
+运行,不重新编译Ellipse,将调用默认方法
+java lambdasinaction.chap9.Game
+编译
+javac lambdasinaction/chap9/Ellipse.java
+运行,将调用默认方法
+java lambdasinaction.chap9.Game

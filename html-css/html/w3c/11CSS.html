@@ -1,0 +1,49 @@
+<!-- 1 外部样式表:
+    用于多个文件
+    通过位于head的link标签设置
+-->
+<head>
+<link rel="stylesheet" type="text/css" href="mystyle.css">
+</head>
+
+<!-- 2 内部样式表:
+    单个文件的特别样式
+    （1）位于head部分通过<style>标签设置
+    （2）数量不限       
+ -->
+<head>
+<style type="text/css">
+body {background-color: red}
+p {margin-left: 20px}
+</style>
+</head>
+
+<!-- 3 内联样式:
+    单个元素的样式
+    通过标签style样式属性设置
+-->
+<p style="color: red; margin-left: 20px">
+This is a paragraph
+</p>
+
+相关标签
+<!-- <style> 标签：定义样式
+（1）type 属性是必需的，定义 style 元素的内容。唯一可能的值是 "text/css"。
+（2）style 元素位于 head 部分中。
+-->
+
+<!-- <link> 标签：定义资源引用（定义文档与外部资源的关系）
+    （1）目前只用于定义外部链接样式表
+    （2）为空元素
+    （3）只能存在于head部分，不过它可出现任何次数
+    （4）主要属性
+        1）href规定被链接文档的位置（URL或本地路径）
+        2）hreflang语言   
+        3）media被链接文档将被显示在什么设备上
+        4）rel规定当前文档与被链接文档之间的关系
+        5）sizes规定被链接资源的尺寸。仅适用于 rel="icon"。
+        6）type规定被链接文档的 MIME 类型。
+举例
+<link rel="stylesheet" type="text/css" href="mystyle.css">
+-->
+

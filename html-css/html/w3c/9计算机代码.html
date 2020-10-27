@@ -1,0 +1,45 @@
+<!-- HTML默认使用可变的字母尺寸，以及可变的字母间距
+显示计算机代码示例时不需要如此，以下元素支持固定的字母尺寸和间距
+-->
+<!--  <kbd> 元素定义键盘输入，打印体等宽字体 -->
+<p><kbd>File | Open...</kbd></p>
+<!-- 定义计算机输出示例，打印体等宽字体 -->
+<samp>
+demo.example.com login: Apr 12 09:10:17
+Linux 2.6.10-grsec+gg3+e+fhs6b+nfs+gr0501+++p3+c4a+gr2b-reslog-v6.189
+</samp>
+<!-- 定义编程代码示例（code不保留多余的空格和换行），打印体等宽字体 -->
+<code>
+var person = {
+    firstName:"Bill",
+    lastName:"Gates",
+    age:50,
+    eyeColor:"blue"
+}
+</code>>
+<!-- <pre>定义预格式化文本 元素中可以保留原格式，打印体等宽字体
+    （1）属性width定义每行的最大字符数，不被赞成使用
+    （2）<pre> 标签与 <code> 标签结合起来使用，以获得更加精确的语义
+    （3）请使用符号实体来表示特殊字符，比如 "&lt;" 代表 "<"，"&gt;" 代表 ">"，"&amp;" 代表 "&"
+    （4）制表符（tab）每个制表符占据 8 个字符的位置，不建议使用，建议使用空格，不同浏览器支持可能不同
+    （5）pre 元素中允许的文本可以包括物理样式和基于内容的样式变化，还有链接、图像和水平分隔线。
+    （6）当把其他标签（比如 <a> 标签）放到 <pre> 块中时，就像放在 HTML/XHTML 文档的其他部分中一样即可
+    （7）可以导致段落断开的标签（例如标题、<p> 和 <address> 标签）绝不能包含在 <pre> 所定义的块里，会导致格式错乱，各浏览器支持程度和解释行为存在差异。
+    注：9种物理样式：包括粗体（bold）、斜体（italic）、等宽（monospaced）、下划线（underlined）、删除线（strikethrough）、放大（larger）、缩小（smaller）、上标（superscripted）和下标（subscripted）文本。
+-->
+<code>
+<pre>
+var person = {
+    firstName:"Bill",
+    lastName:"Gates",
+    age:50,
+    eyeColor:"blue"
+    <p>段落</p>
+    <h2>标题</h2>
+    <address>地址</address>
+}
+</pre>
+</code>
+<!-- 定义数学变量或公式,自动斜体 -->
+<p><var>E</var> = <var>m</var> <var>c</var><sup>2</sup></p>
+<p><var>E=MC<sup>2</sup></var></p>

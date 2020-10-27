@@ -1,0 +1,46 @@
+<!-- 表格由 <table> 标签来定义
+    （1）行：若干行（由 <tr> 标签定义td 指表格行（table raw）
+    （2）单元：每行被分割为若干单元格（由 <td> 标签定义）td 指表格数据（table data）
+        td要由tr包围，tr为td容器，table为tr容器
+    （3）数据单元格可以包含文本、图片、列表、段落、表单、水平线、表格等
+    （4）表格和边框属性：默认无边框 
+        1）table的border="1"属性定义边框，即每个元素td的边框和整个表table的边框
+        2) border="1"改变仅影响table的边框尺寸而不影响td的边框尺寸
+        3）空白格需要td占位，使用<td>&nbsp;</td>而不是<td></td> 
+        4）默认所有td元素从左到右排列
+    （5）列名：th表格的表头，即每列的列名
+        1）默认格式时粗体居中
+        2）由tr包围th,th仅仅时具体特殊格式的td
+    （6）标题：caption标签定义表格标题
+        必须紧随 table 标签之后。
+        您只能对每个表格定义一个标题。
+        通常这个标题会被居中于表格之上
+    （7）表格通常分为：页眉thead(包含th行)，主体tbody(包td行)，页脚tfoot(包含td行)
+    表头<th>和<td>有colspan,rowspan属性：
+        其中colspan单元格可横跨的列数
+        其中rowspan规定单元格可横跨的行数。
+-->
+<table border="1">
+  <thead>
+    <tr>
+      <th>Month</th>
+      <th>Savings</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>January</td>
+      <td>$100</td>
+    </tr>
+    <tr>
+      <td>February</td>
+      <td>$80</td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td>Sum</td>
+      <td>$180</td>
+    </tr>
+  </tfoot>
+</table>

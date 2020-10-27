@@ -1,0 +1,60 @@
+<!-- 背景色
+    p {background-color: gray;}
+    （1）默认值是transparent（透明）
+    （2）不能继承，也就是说，如果一个元素没有指定背景色，那么背景就是透明的，这样其祖先元素的背景才能可见。
+    背景图
+    background-image 
+    （1）默认值是 none，表示背景上没有放置任何图像。
+    （2）不能继承。事实上，所有背景属性都不能继承。
+    背景重复
+    background-repeat
+    （1）属性值 repeat 导致图像在水平垂直方向上都平铺，
+        repeat-x 和 repeat-y 分别导致图像只在水平或垂直方向上重复，
+        no-repeat 则不允许图像在任何方向上平铺。
+    （2）默认地，背景图像将从一个元素的左上角开始。
+    背景定位
+    background-position
+    （1）图像起始位置
+    （2）上下左右/像素/百分比均可为其赋值
+    （3）关键词：只出现一个关键字，则认为另一个关键字是 center
+        位置关键字可以按任何顺序出现，只要保证不超过两个关键字 - 一个对应水平方向，另一个对应垂直方向
+    （4）百分比水平比例 垂直比例
+    （4）长度值解释的是元素内边距区左上角的偏移。偏移点是图像的左上角 水平举例 垂直举例。
+    （5）默认值左上角
+    背景关联
+    background-attachment:fixed
+    （1）fixed保证背景不受滚动影响
+    （2）属性的默认值是 scroll，也就是说，在默认的情况下，背景会随文档滚动。
+    简写
+    background: #ff0000 url(/i/eg_bg_03.gif) no-repeat fixed center;
+    将多个属性写在一个background中，不推荐
+-->
+<html>
+<head>
+<style type="text/css">
+p[id="1"]{ 
+    background-image: url('t1.jpg');
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+p[id="2"]{ 
+    background-image: url('t1.jpg');
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+}
+
+p{
+    color: brown;
+    font-size: larger;
+}
+</style>
+</head>
+
+<body>
+<p id=1>为了在 Mozilla 中实现此效果，background-attachment 属性必须设置为 "fixed"。</p>
+
+<p id=2>为了在 Mozilla 中实现此效果，background-attachment 属性必须设置为 "fixed"。</p>
+
+<p>为了在 Mozilla 中实现此效果，background-attachment 属性必须设置为 "fixed"。</p>
+</body>
+</html>

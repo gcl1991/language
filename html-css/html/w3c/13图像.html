@@ -1,0 +1,31 @@
+<!-- <img>在文档中显示图像
+    （1）空元素
+    （2）源属性src="url"指向图像地址（URL或本地路径）
+    （3）默认为内联图像，即插入占位符位置，不提供任何格式。
+    （4）替换文本属性alt，图片无法显示时使用
+    （5）定义图片宽高height width
+    （6）usemap实现图片的局部点击超链接效果,引用map（可点击区域的图像映射）
+-->
+
+<!-- map:一组可点击区域的图像映射
+    (1)<img>中的 usemap 属性可引用 <map> 中的 id 或 name 属性
+    (2)area 元素永远嵌套在 map 元素内部。area 元素可定义图像映射中的区域(超链接点击区域)
+    如
+<img src="planets.jpg" border="0" usemap="#planetmap" alt="Planets" />
+<map name="planetmap" id="planetmap">
+  <area shape="circle" coords="180,139,14" href ="venus.html" alt="Venus" />
+  <area shape="circle" coords="129,161,10" href ="mercur.html" alt="Mercury" />
+  <area shape="rect" coords="0,0,110,260" href ="sun.html" alt="Sun" />
+</map>
+-->
+
+<!-- area标签：可点击区域的图像映射
+    （1）空元素
+    （2）coords可点击区域（对鼠标敏感的区域）的坐标shape区域的形状
+        coords 属性与 shape 属性配合使用
+        如圆形：shape="circle"，coords="x,y,z"
+        多边形：shape="polygon"，coords="x1,y1,x2,y2,x3,y3,..."
+        矩形：shape="rectangle"，coords="x1,y1,x2,y2"
+        会自动形成闭合区域
+    （3）具有target，href，alt与img标签相同作用
+-->

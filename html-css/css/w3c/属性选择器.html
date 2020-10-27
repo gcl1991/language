@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style type="text/css">
+p[class~="important"] {
+    color: red;
+}
+p[lang|="en"] {
+    color:blue;
+}
+[class^="test"]
+{
+background:#ffff00;
+}
+</style>
+</head>
+<body>
+<h1>可以应用样式：</h1>
+<p class="important">This is a paragraph.</a>
+<p class="important warning">This is a paragraph.</a>
+<p class="warning important">This is a paragraph.</a>
+
+<hr />
+
+<h1>无法应用样式：</h1>
+<p class="importantwarning">This is a paragraph.</a>
+<p class="important-warning">This is a paragraph.</a>    
+<p class="important,warning">This is a paragraph.</a>
+</body>
+总结：~=仅适用于包含此单词，但不限制单词出现的位置，同时单词前后必须右空格
+<h1>可以应用样式：</h1>
+<p lang="en">Hello!</p>
+<p lang="en-us">Greetings!</p>
+<p lang="en-au">G'day!</p>
+<p lang="en-1.jpg">Jrooana!</p>
+<hr />
+
+<h1>无法应用样式：</h1>
+<p lang="enx1">Bonjour!</p>
+<p lang="en x2">Jrooana!</p>
+<p lang="en,x3">Jrooana!</p>
+总结：|=仅匹配包含以指定字母en或en-开头的属性，且该属性只能是en或en-开始的单个单词。
+
+<h1>可以应用样式</h1>
+<div class="test">第三个 div 元素。</div>
+<div class="test-">第三个 div 元素。</div>
+<div class="test 1">第三个 div 元素。</div>
+
+<h1>无法应用样式</h1>
+<div class="first_test">第一个 div 元素。</div>
+总结：^=en匹配以字符en开头的任意文本。
+*=en匹配包含en的文本，$=en匹配以en结尾的文本。
+</html>
