@@ -7,7 +7,6 @@ public class GlobalLogger {
 		GlobalLogger.function();
 		Logger.getGlobal().setLevel(Level.OFF);
 		Logger.getGlobal().info("File->Open menu item selected after");
-		
 	}
 	
 	public static void function() {
