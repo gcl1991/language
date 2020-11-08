@@ -39,3 +39,27 @@
 数值字面量 / 对枚举和字符串的switch支持
 
 带资源的try / lambda表达式 / 协变
+
+## JAVA主要书籍
+
+必看
+
+JAVA核心编程卷1
+
+高效的JAVA
+
+深入理解JVM
+
+JAVA并发实战
+
+JAVA性能权威指南
+
+
+
+选看
+
+JAVA编程思想
+
+JAVA实战
+
+JAVA核心编程卷2
