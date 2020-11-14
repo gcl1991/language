@@ -5,7 +5,7 @@ package org.fenixsoft.jvm.chapter2;
  *
  * @author zzm
  */
-public class JavaVMStackSOF_3 {
+public class JavaVMStackSOF_2 {
     private static int stackLength = 0;
 
     public static void test() {
