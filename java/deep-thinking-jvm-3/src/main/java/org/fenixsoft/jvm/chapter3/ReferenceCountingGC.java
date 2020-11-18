@@ -16,7 +16,7 @@ public class ReferenceCountingGC {
      */
     private byte[] bigSize = new byte[2 * _1MB];
 
-    public static void testGC() {
+    public static void testGC() throws InterruptedException {
         ReferenceCountingGC objA = new ReferenceCountingGC();
         ReferenceCountingGC objB = new ReferenceCountingGC();
         objA.instance = objB;
@@ -27,5 +27,9 @@ public class ReferenceCountingGC {
 
         // 假设在这行发生GC，objA和objB是否能被回收？
         System.gc();
+    }
+
+    public static void main(String[] args) throws InterruptedException {
+        testGC();
     }
 }

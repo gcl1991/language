@@ -20,7 +20,6 @@ public class JavaVMStackSOF_1 {
             oom.stackLeak();
         } catch (Throwable e) {
             System.out.println("stack length:" + oom.stackLength);
-            throw e;
         }
     }
 }
