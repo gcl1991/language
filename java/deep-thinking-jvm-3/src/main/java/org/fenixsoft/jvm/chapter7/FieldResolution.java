@@ -17,7 +17,7 @@ public class FieldResolution {
         int A = 2;
     }
 
-    static class Parent implements Interface1 {
+    static class Parent implements Interface1{
         public static int A = 3;
     }
 
