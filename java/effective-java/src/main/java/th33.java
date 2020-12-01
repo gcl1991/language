@@ -7,7 +7,7 @@ public class th33 {
         // <1>
         Favorites f = new Favorites();
         f.put(String.class,"123");
-        f.put(Integer.class,"123"); // 类型不匹配不可插入
+//        f.put(Integer.class,"123"); // 类型不匹配不可插入
         System.out.println(f.get(String.class));
 
         // <2>
@@ -17,7 +17,7 @@ public class th33 {
         hInteger.add(1);
         f.put(HashSet.class,hString); // 原始类型插入
         f.put(HashSet.class,hInteger); // 原始类型插入
-        f.put(HashSet<String>.class,hs); // error 不可插入泛型类
+//        f.put(HashSet<String>.class,hs); // error 不可插入泛型类
         System.out.println(f.get(HashSet.class));
 
 
