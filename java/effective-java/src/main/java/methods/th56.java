@@ -2,6 +2,9 @@ package methods;
 
 /**
  * 为所有已公开的API元素编写文档注释.
+ *
+ * 运行 javadoc -tag "implSpec:a:Implementation Requirements:" -encoding utf-8 th56.java -d C:\Users\longlong\Desktop\doc
+ *
  * @author   gcl
  *           作者用在类中
  * @version  1.0
@@ -24,10 +27,9 @@ public class th56 {
         /**
          * 方法注释:方法使用动词短语描述; 以.结束,如果想包含.应使用{@literal M.S.}.
          *
-         * <p>
-         *     方法的文档注释应该简洁地描述方法与其客户端之间的契约<br>
-         *     契约: 前置条件+后置条件+副作用
-         * </p>
+         * <p> 方法的文档注释应该简洁地描述方法与其客户端之间的契约<br>
+         *     契约: 前置条件+后置条件+副作用</p>
+         *
          * @param paramS
          *        解释参数的名词短语
          *
