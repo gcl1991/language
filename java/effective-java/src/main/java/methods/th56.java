@@ -44,9 +44,9 @@ public class th56 {
             }
             return 0;
         }
+
         /**
          * 常用标记说明.
-         * @deprecated 使用X方法代替此方法，此说明自动提升到第一行
          * <ul>
          * <li><b>link</b>
          * <p> {@link java.lang.Object 规则与see相同,用于指向其他类或方法的超链接}</p></li>
@@ -77,6 +77,7 @@ public class th56 {
          * @see <a href="https://www.oracle.com/cn/technical-resources/articles/java/javadoc-tool.html">lable1</a>
          * @see java.lang.Object#equals(Object) label2
          * @see "lable3"
+         * @deprecated 使用X方法代替此方法，此说明自动提升到第一行
          *
          * */
         public void methodMark(){
