@@ -1,4 +1,4 @@
-package learn_java.string;
+package src.main.java;
 
 public class Unicode {
     public static void main(String[] args){
