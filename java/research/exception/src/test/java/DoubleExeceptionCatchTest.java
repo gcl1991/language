@@ -5,4 +5,9 @@ public class DoubleExeceptionCatchTest {
     public void testDoubleCatch(){
         DoubleExeceptionCatch.doubleCatch(true);
     }
+
+    @Test
+    public void testCatchThrow(){
+        DoubleExeceptionCatch.catchThrow(true);
+    }
 }

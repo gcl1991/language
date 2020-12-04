@@ -13,6 +13,7 @@ public class FinallyReturn {
             return 2;
         }
         finally {
+            // 无论触发哪个异常，最终返回皆为3
             return 3;
         }
     }

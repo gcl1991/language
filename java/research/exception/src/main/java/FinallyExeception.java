@@ -8,6 +8,7 @@ public class FinallyExeception {
             }
         }finally {
             if (active){
+                // 此异常会覆盖上个异常
                 throw new FileNotFoundException("2");
             }
         }
