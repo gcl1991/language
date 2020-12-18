@@ -56,4 +56,18 @@ hs_err_pid*
 # jvm
 *.hprof
 
+# python
+__pycache__/
+*.py[cod]
+*$py.class
+.idea/
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
 
