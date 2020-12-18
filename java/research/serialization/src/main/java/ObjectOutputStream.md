@@ -1,0 +1,43 @@
+ObjectOutputStream将Java对象的原始数据类型和图写入OutputStream。可以使用ObjectInputStream读取（重组）对象。可以通过使用文件来实现对象流的持久存储。如果流是网络套接字流，则可以在另一台主机或另一进程中重组对象。
+
+只有支持java.io.Serializable接口的对象才能写入流。每个可序列化对象的类都经过编码，包括类名和类签名，对象的字段和数组的值，从初始对象引用的任何其他对象的闭包。
+
+writeObject方法用于将对象写入流。任何对象，包括字符串和数组，都是使用writeObject编写的。可以将多个对象或基元写入流中。必须从相应的ObjectInputstream中以与写入对象相同的类型和顺序读取对象。
+
+还可以使用DataOutput中的适当方法将原始数据类型写入流中。也可以使用writeUTF方法写入字符串。
+
+对象的默认序列化机制将写入对象的类，类签名以及所有非瞬态和非静态字段的值。对其他对象的引用（在瞬态或静态字段中除外）会使这些对象也被写入。使用引用共享机制对单个对象的多个引用进行编码，以便可以将对象的图恢复为与编写原始图时相同的形状。
+
+例如，编写一个对象，该对象可由ObjectInputStream中的示例读取：
+
+FileOutputStream fos = new FileOutputStream("t.tmp");
+ObjectOutputStream oos = new ObjectOutputStream(fos);
+
+oos.writeInt(12345);
+oos.writeObject("Today");
+oos.writeObject(new Date());
+
+oos.close();
+
+在序列化和反序列化过程中需要特殊处理的类必须实现具有这些确切签名的特殊方法
+
+private void readObject(java.io.ObjectInputStream stream)
+throws IOException, ClassNotFoundException;
+private void writeObject(java.io.ObjectOutputStream stream)
+throws IOException
+private void readObjectNoData()
+throws ObjectStreamException;
+
+writeObject方法负责为其特定类写入对象的状态，以便相应的readObject方法可以还原它。该方法无需将自身与属于对象的超类或子类的状态有关。通过使用writeObject方法将单个字段写入ObjectOutputStream或使用DataOutput支持的原始数据类型的方法来保存状态。
+
+序列化不会写出(write out )任何未实现java.io.Serializable接口的对象的字段。不可序列化的对象的子类可以被序列化。在这种情况下，不可序列化的类必须具有no-arg构造函数，以允许对其字段进行初始化。在这种情况下，子类负责保存和恢复不可序列化类的状态。通常，该类的字段是可访问的（公共，程序包或受保护），或者存在可用于还原状态的get和set方法。
+
+通过实现抛出NotSerializableException的writeObject和readObject方法，可以防止对象的序列化。 ObjectOutputStream将捕获异常，并中止序列化过程。
+
+实现Externalizable接口使对象可以完全控制对象序列化表单的内容和格式。调用Externalizable接口的方法writeExternal和readExternal来保存和恢复对象状态。当由类实现时，它们可以使用ObjectOutput和ObjectInput的所有方法来写入和读取自己的状态。对象负责处理发生的任何版本控制。
+
+枚举常量的序列化与普通的可序列化或可外部化的对象不同。枚举常量的序列化形式仅由其名称组成；常量的字段值不发送。为了序列化枚举常量，ObjectOutputStream写入由常量的name方法返回的字符串。像其他可序列化或可外部化的对象一样，枚举常量可以用作随后出现在序列化流中的反向引用的目标。枚举常量序列化的过程无法自定义；枚举类型定义的任何特定于类的writeObject和writeReplace方法在序列化过程中都会被忽略。同样，任何serialPersistentFields或serialVersionUID字段声明也将被忽略-所有枚举类型的固定serialVersionUID为0L。
+
+除可序列化serializable的字段和可外部化externalizable的数据外的原始数据将写入ObjectOutputStream的block-data记录。block-data记录由标头和数据组成。
+标头由标记Marker和跟随标头的字节数组成,连续的原始数据写入将合并到一个块数据block-data记录中。用于块数据block-data记录的块因子为1024字节。每个块数据记录将最多填充1024个字节，或者在块数据模式终止时写入。
+调用ObjectOutputStream的writeObject，defaultWriteObject and writeFields 终止任何现有的块数据记录。

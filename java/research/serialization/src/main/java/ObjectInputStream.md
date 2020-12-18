@@ -1,0 +1,69 @@
+ObjectInputStream反序列化原始数据和先前使用ObjectOutputStream写入的对象
+
+当分别与FileOutputStream和FileInputStream一起使用时，ObjectOutputStream和ObjectInputStream可以为应用程序提供对象图的持久存储。 
+ObjectInputStream用于恢复先前序列化的那些对象。其他用途包括使用套接字流在主机之间传递对象，或在远程通信系统中用于封装和解封参数。
+
+ObjectInputStream确保从流创建的图中的所有对象的类型与Java虚拟机中存在的类匹配。使用标准机制根据需要加载类。
+
+只能从流中读取支持java.io.Serializable或java.io.Externalizable接口的对象。
+
+readObject方法用于从流中读取对象。应该使用Java的安全类型转换来获取所需的类型。在Java中，字符串和数组是对象，在序列化期间被视为对象。读取时，需要将它们强制转换为预期的类型。
+
+可以使用DataInput上的适当方法从流中读取原始数据类型。
+
+对象的默认反序列化机制将每个字段的内容还原为写入时具有的值和类型。反序列化过程将忽略声明为瞬态或静态的字段。对其他对象的引用会根据需要从流中读取这些对象。使用引用共享机制可以正确还原对象图。反序列化时总是分配新对象，这可以防止现有对象被覆盖。
+
+读取对象类似于运行新对象的构造函数。为对象分配内存，并将其初始化为零（NULL）。为不可序列化的类调用无参数构造函数，然后从流中恢复可序列化类的字段，从最接近java.lang.object的可序列化类开始，最后以对象的最特定类结束。
+
+例如，从ObjectOutputStream中的示例编写的流中读取：
+
+FileInputStream fis = new FileInputStream("t.tmp");
+ObjectInputStream ois = new ObjectInputStream(fis);
+
+int i = ois.readInt();
+String today = (String) ois.readObject();
+Date date = (Date) ois.readObject();
+
+ois.close();
+
+类通过实现java.io.Serializable或java.io.Externalizable接口控制序列化的方式。
+
+实现Serializable接口允许对象序列化保存和恢复对象的整个状态,它允许类在写入流和读取流之间演变。
+它自动遍历对象之间的引用，保存和还原整个图形。
+
+在序列化和反序列化过程中需要特殊处理的可序列化类应实现以下方法：
+
+private void writeObject(java.io.ObjectOutputStream stream)
+throws IOException;
+private void readObject(java.io.ObjectInputStream stream)
+throws IOException, ClassNotFoundException;
+private void readObjectNoData()
+throws ObjectStreamException;
+
+readObject方法负责使用通过相应的writeObject方法写入流中的数据读取和还原其特定类的对象状态。该方法无需将自身与属于其超类或子类的状态相关。通过从ObjectInputStream读取各个字段的数据并分配给对象的相应字段来恢复状态。 DataInput支持读取原始数据类型。
+
+从对象中读取超出相应writeObject方法写入的自定义数据范围的任何数据，会抛出EOF设置为true的OptionalDataException,
+超出分配数据末尾的非对象读取，将以指示数据流结束的相同方式反映数据的结束：
+按字节读取将返回-1作为读取的字节或读取的字节数，而原始读取将引发EOFExceptions
+如果没有相应的writeObject方法，然后默认序列化数据的末尾将标记分配数据的末尾。
+
+从readExternal方法内发出的基本和对象读取调用的行为方式相同--如果流已经位于由相应的writeExternal方法写入的数据的末尾，
+对象读取将抛出EOF设置为true的OptionalDataExceptions，按字节读取将返回-1，而原始读取将抛出EOFExceptions。
+请注意，此行为不适用于使用旧ObjectStreamConstants.PROTOCOL_VERSION_1协议编写的流,
+，其中未标出writeExternal方法写入的数据结尾,因此无法检测到。
+
+
+如果序列化流未将给定类列为要反序列化的对象的超类，则readObjectNoData方法负责为其特定类初始化对象的状态。在接收方使用与发送方不同的反序列化实例类的版本，并且接收方的版本扩展了发送方版本未扩展的类的情况下，可能会发生这种情况。如果序列化流已被篡改，也会发生这种情况。因此，尽管源流“敌对”或不完整，但readObjectNoData对于正确初始化反序列化的对象很有用。
+
+序列化不会读取任何值或将值分配给任何未实现java.io.Serializable接口的对象。不可序列化的对象的子类可以被序列化。在这种情况下，不可序列化的类必须具有no-arg构造函数，以允许对其字段进行初始化。在这种情况下，子类负责保存和恢复不可序列化类的状态。通常，该类的字段是可访问的（公共，程序包或受保护），或者存在可用于还原状态的get和set方法。
+
+反序列化对象时发生的任何异常都将被ObjectInputStream捕获并中止读取过程。
+
+实现Externalizable接口允许对象承担对对象序列化表格的内容和格式的完全控制。
+调用Externalizable接口的方法writeExternal和readExternal来保存和恢复对象状态。当由类实现时，它们可以使用ObjectOutput和ObjectInput的所有方法来写入和读取自己的状态。对象负责处理发生的任何版本控制。
+
+枚举常量的反序列化方式不同于普通的可序列化或可外部化的对象。枚举常量的序列化形式仅由其名称组成；常量的字段值不发送。
+为了反序列化枚举常量，ObjectInputStream从流中读取常量名称。然后，通过以枚举常量的基本类型和接收到的常量名称作为参数的静态方法Enum.valueOf（Class，String）来获取反序列化的常量。
+像其他可序列化或可外部化的对象一样，枚举常量可以用作随后出现在序列化流中的反向引用的目标。
+无法自定义枚举常量的反序列化过程：在反序列化期间，将忽略由枚举类型定义的任何特定于类的readObject，readObjectNoData和readResolve方法。同样，任何serialPersistentFields或serialVersionUID字段声明也将被忽略-所有枚举类型的固定serialVersionUID为0L。
+ 
