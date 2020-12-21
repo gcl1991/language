@@ -1,14 +1,14 @@
 import java.io.*;
 
 public class Serials {
-    public static <T> void read(String filePath){
+    public static <T> T read(String filePath){
         T obj = null;
         try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(filePath))){
             obj = (T) in.readObject();
         } catch(IOException | ClassNotFoundException ex){
             ex.printStackTrace();
         }
-        System.out.println("Restored obj: " + obj.toString());
+        return obj;
     }
 
     public static <T> void write(String filePath,T obj){
