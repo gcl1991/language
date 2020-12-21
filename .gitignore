@@ -70,4 +70,6 @@ ENV/
 env.bak/
 venv.bak/
 
+# JAVA序列化
+*.ser
 
