@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 
 /**
  * @author zzm
+ * -Dcom.sun.management.jmxremote.port=9999 -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.authenticate=false -Djava.rmi.server.hostname=localhost -XX:+UnlockCommercialFeatures -XX:+FlightRecorder
  */
 public class BTraceTest {
 

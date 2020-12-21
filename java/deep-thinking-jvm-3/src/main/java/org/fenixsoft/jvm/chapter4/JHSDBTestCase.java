@@ -2,6 +2,7 @@ package org.fenixsoft.jvm.chapter4;
 
 /**
  * staticObj、instanceObj、localObj存放在哪里？
+ * -Xmx10m -XX:+UseSerialGC -XX:-UseCompressedOops
  */
 public class JHSDBTestCase {
 
