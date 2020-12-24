@@ -1,53 +1,22 @@
-package serialization;
+package serialization.th87;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
-/**
- * 考虑使用自定义的序列化形式
- * 1 如果对象的物理表示与其逻辑内容相同，则默认的序列化形式可能是合适的，否则不要使用默认序列化（存在4个缺点）。
- * 即使你认为默认的序列化形式是合适的，你通常也必须提供 readObject 方法来确保不变性和安全性。
- * 2 writeObject 做的第一件事是调用 defaultWriteObject , readObject 做的第一件事是调用 defaultReadObject
- */
-public class th87 {
-
-}
-
-// 1 如果对象的物理表示与其逻辑内容相同
-class Name implements Serializable {
-    /**
-     * Last name. Must be non-null.
-     *
-     * @serial
-     */
-    private final String lastName;
-    /**
-     * First name. Must be non-null.
-     *
-     * @serial
-     */
-    private final String firstName;
-    /**
-     * Middle name, or null if there is none.
-     *
-     * @serial
-     */
-    private final String middleName;
-
-    public Name() {
-        firstName = "";
-        middleName = "";
-        lastName = "";
-    }
-}
 
 // 1 具有合理的自定义序列化格式的StringList
-final class StringList implements Serializable {
+public final class StringList implements Serializable {
+    private static final long serialVersionUID = 0L;
     private transient int size = 0;
     private transient Entry head = null;
     // 不再可序列化！
+
+    StringList(){
+        size = 1;
+        head = new Entry();
+    }
 
     private static class Entry {
         String data;
@@ -58,7 +27,6 @@ final class StringList implements Serializable {
     // Appends the specified string to the list
     // 将指定的字符串追加到列表
     public final void add(String s) {
-
     }
 
     /**
@@ -89,4 +57,13 @@ final class StringList implements Serializable {
         for (int i = 0; i < numElements; i++)
             add((String) s.readObject());
     }
+
+    @Override
+    public String toString() {
+        return "StringList{" +
+                "size=" + size +
+                ", head=" + head +
+                '}';
+    }
+
 }
