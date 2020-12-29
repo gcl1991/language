@@ -11,8 +11,6 @@ public class th88Test {
     @Test
     public void test() {
         String filename = "periodA.ser";
-//        Serials.write(filename, new th88.Period(new Date(2020, Calendar.DECEMBER, 23),
-//                new Date(2020,Calendar.DECEMBER,22)));
         th88.Period period = Serials.read(filename);
         System.out.println(period);
     }

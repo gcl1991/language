@@ -24,8 +24,10 @@ public class th88 {
         public Period(Date start, Date end) {
             this.start = new Date(start.getTime());
             this.end = new Date(end.getTime());
-            if (this.start.compareTo(this.end) > 0)
+            // 去除下面这行可以复现伪字节流攻击
+            if (this.start.compareTo(this.end) > 0) {
                 throw new IllegalArgumentException(start + " after " + end);
+            }
         }
 
         public Date start() {
@@ -36,6 +38,7 @@ public class th88 {
             return new Date(end.getTime());
         }
 
+        @Override
         public String toString() {
             return start + " - " + end;
         }
@@ -53,11 +56,13 @@ public class th88 {
             end = new Date(end.getTime());
             // Check that our invariants are satisfied
             // 检查我们的不变量是否满足
-            if (start.compareTo(end) > 0)
+            if (start.compareTo(end) > 0) {
                 throw new InvalidObjectException(start + " after " + end);
+            }
         }
     }
 
+    // 复现：内部字段盗用攻击
     public static class MutablePeriod {
         // A period instance
         public final Period period;

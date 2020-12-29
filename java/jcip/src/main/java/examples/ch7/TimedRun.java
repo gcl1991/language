@@ -24,6 +24,7 @@ public class TimedRun {
             // task will be cancelled below
         } catch (ExecutionException e) {
             // exception thrown in task; rethrow
+            // 清洗launder异常Throwable
             throw launderThrowable(e.getCause());
         } finally {
             // Harmless if task already completed
