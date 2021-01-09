@@ -1,4 +1,4 @@
-package examples;
+package examples.ch7;
 
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -16,9 +16,7 @@ import static examples.LaunderThrowable.launderThrowable;
 public class TimedRun2 {
     private static final ScheduledExecutorService cancelExec = newScheduledThreadPool(1);
 
-    public static void timedRun(final Runnable r,
-                                long timeout, TimeUnit unit)
-            throws InterruptedException {
+    public static void timedRun(final Runnable r, long timeout, TimeUnit unit) throws InterruptedException {
         class RethrowableTask implements Runnable {
             private volatile Throwable t;
 

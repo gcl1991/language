@@ -1,4 +1,4 @@
-package examples;
+package examples.ch7;
 
 import java.util.concurrent.*;
 
