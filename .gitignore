@@ -73,3 +73,6 @@ venv.bak/
 # JAVA序列化
 *.ser
 
+# 忽略指定文件夹
+*/JavaPerformanceTuning/SecondEdition/
+
