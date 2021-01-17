@@ -4,6 +4,8 @@
     <property environment="env"/>
     <property name="stock_api" location="../../api/jars/stockapi.jar"/>
     <property name="stock_impl" location="../../impl/jars/stockimpl.jar"/>
+    <property name="env.JAVAX_PERSISTENCE" value="D:\program\glassfish-4.1.2\glassfish4\glassfish\modules\javax.persistence.jar"/>
+    <property name="env.JAVAX_EJB" value="D:\program\glassfish-4.1.2\glassfish4\glassfish\modules\javax.ejb-api.jar"/>
 
     <target name="init">
         <mkdir dir="classes"/>

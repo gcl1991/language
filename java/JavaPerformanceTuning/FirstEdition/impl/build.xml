@@ -2,13 +2,14 @@
 
 <project name="StockImpl" default="jar">
     <property name="impl" value="EagerLazyImpl"/>
+	<property name="env.JAVAX_PERSISTENCE" value="D:\program\glassfish-4.1.2\glassfish4\glassfish\modules\javax.persistence.jar"/>
 
     <target name="init">
 	<mkdir dir="classes"/>
 	<mkdir dir="jars"/>
     </target>
 
-    <target name="compile" depends="init">
+	<target name="compile" depends="init">
 	<property environment="env"/>
 	<javac includeantruntime="false" srcdir="src" destdir="classes"
 	       debug="true" excludes="**/*QueryCache*.java">
