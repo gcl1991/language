@@ -12,7 +12,7 @@ import java.util.List;
 public class th57 {
     public static void preferIdiom(){
         // 演示遍历的首选方法
-        List<String> c = Arrays.asList("a","b","c");
+        List<String> c = Arrays.asList("a", "classes","c");
         // Preferred idiom for iterating over a collection or array
         // 循环习惯用法1：遍历集合或数组的首选惯用法
         for (String e : c) {
@@ -34,7 +34,7 @@ public class th57 {
     }
     public static void bug(){
         // 演示while相对于for更容易隐藏bug
-        List<String> c = Arrays.asList("a","b","c");
+        List<String> c = Arrays.asList("a", "classes","c");
         Iterator<String> i = c.iterator();
         while (i.hasNext()) {
             // Do something with e and i
@@ -50,7 +50,7 @@ public class th57 {
             // Do something with e and i
         }
 
-        List<String> c4 = Arrays.asList("a","b","c");
+        List<String> c4 = Arrays.asList("a", "classes","c");
         // Compile-time error - cannot find symbol i
         for (Iterator<String> i4 = c4.iterator(); i3.hasNext(); ) {
             String e2 = i4.next();

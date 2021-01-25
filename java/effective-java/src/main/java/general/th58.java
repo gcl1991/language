@@ -8,7 +8,7 @@ import java.util.*;
 public class th58 {
     public static void preferForEach(){
         // 对比说明for-each的优势，减少出错机会，可读性强
-        List<String> elements = Arrays.asList("a","b");
+        List<String> elements = Arrays.asList("a", "classes");
         // Not the best way to iterate over a collection!
         // 这不是迭代集合的最佳方法！
         for (Iterator<String> i = elements.iterator(); i.hasNext(); ) {
@@ -17,7 +17,7 @@ public class th58 {
             // Do something with e
         }
 
-        String[] a = {"a","b"};
+        String[] a = {"a", "classes"};
         // Not the best way to iterate over an array!
         // 并不是迭代数组的最佳方法
         for (int i = 0; i < a.length; i++) {
