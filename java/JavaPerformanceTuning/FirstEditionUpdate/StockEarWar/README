@@ -38,6 +38,8 @@ Example 5-2
     your favorite load generating tool to send requests to (e.g., to save
     the previous 10 entries)
     http://host:port/StockEar-war/StockServlet?save=10
+    fhb -W 1000 -r 0/60/10 -c 1 http://localhost:8000/StockServlet.html?save=10
+    fhb  -r 0/60/10 -c 1 http://localhost:8000/StockServlet.html?save=10
 
     Make sure that the application server is configured with the appropriate
     GC parameters and has at least 4 threads in the default thread pool. Also

@@ -65,8 +65,8 @@ public class StockPriceHistoryBatcher {
         if (args.length > 4) {
             save = Integer.parseInt(args[4]);
         }
-//        System.out.println("Num stocks " + numStocks + " " +
-//                           startDate + " " + endDate);
+        System.out.println("Num stocks " + numStocks + " " +
+                           startDate + " " + endDate);
 
         initEM();
         StockPriceHistory[] saved = new StockPriceHistory[save];
@@ -80,10 +80,10 @@ public class StockPriceHistoryBatcher {
                 sph = new StockPriceHistoryLogger(symbol, startDate,
                               endDate, em);
             }
-//            System.out.println("For " + sph.getSymbol()
-//                + ": High " + nf.format(sph.getHighPrice())
-//                + ", Low " + nf.format(sph.getLowPrice())
-//                + ", Standard Deviation: " + sph.getStdDev().doubleValue());
+            System.out.println("For " + sph.getSymbol()
+                + ": High " + nf.format(sph.getHighPrice())
+                + ", Low " + nf.format(sph.getLowPrice())
+                + ", Standard Deviation: " + sph.getStdDev().doubleValue());
             if (save > 0) {
                 saved[i % save] = sph;
             }
