@@ -1,4 +1,4 @@
-// standardio/Redirecting.java
+package standardio;// standardio/standardio.Redirecting.java
 // (c)2020 MindView LLC: see Copyright.txt
 // We make no guarantees that this code is fit for any purpose.
 // Visit http://OnJava8.com for more book information.
@@ -10,16 +10,14 @@ public class Redirecting {
     PrintStream console = System.out;
     try(
       BufferedInputStream in = new BufferedInputStream(
-        new FileInputStream("Redirecting.java"));
+        new FileInputStream("src/main/java/standardio/Redirecting.java"));
       PrintStream out = new PrintStream(
-        new BufferedOutputStream(
-          new FileOutputStream("Redirecting.txt")))
+        new BufferedOutputStream(new FileOutputStream("standardio.Redirecting.txt")))
     ) {
       System.setIn(in);
       System.setOut(out);
       System.setErr(out);
-      new BufferedReader(
-        new InputStreamReader(System.in))
+      new BufferedReader(new InputStreamReader(System.in))
         .lines()
         .forEach(System.out::println);
     } catch(IOException e) {

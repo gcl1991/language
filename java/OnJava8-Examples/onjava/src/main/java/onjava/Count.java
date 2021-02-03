@@ -6,7 +6,8 @@
 package onjava;
 import java.util.*;
 import java.util.function.*;
-import static onjava.ConvertTo.*;
+
+import static onjava.ConvertTo.primitive;
 
 public interface Count {
   class Boolean
