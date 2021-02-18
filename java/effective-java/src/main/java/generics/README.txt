@@ -30,3 +30,9 @@
 3 SafeVarargs 注释仅对不能覆盖的方法合法，因为不可能保证所有可能覆盖的方法都是安全的。静态方法/final方法/私有实例方法。
 
 # 考虑类型安全的异构容器
+1 例如public class Favorites {
+      public <T> void putFavorite(Class<T> type, T instance);
+      public <T> T getFavorite(Class<T> type);
+  }
+2 第一个限制，使用原始形式的类对象破坏Favorites实例的类型(这个没搞明白)
+3 第二个限制，它不能用于不可具体化的类型
