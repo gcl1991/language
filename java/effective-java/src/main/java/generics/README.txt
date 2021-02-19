@@ -8,9 +8,10 @@
 1 每次使用SuppressWarnings("unchecked")注解时,应将作用域压缩至最小，并添加一条注释，说明这样做是安全的
 
 # List优于数组
-1 数组是协变的,运行时有类型信息; 泛型是不变的,运行时没有类型信息，若Sub extend Super，则Sub[]是Super[]子类，List<Sub>和List<Super>同属于List类，二者无继承关系
+1 数组是协变的,运行时有类型信息,是运行时类型安全的; 泛型是不变的,运行时没有类型信息，编译时类型安全；泛型类型安全性优于数组
+  若Sub extend Super，则Sub[]是Super[]子类，List<Sub>和List<Super>同属于List类，二者无继承关系
   如new List<E>[]、new List<String>[]、new E[]不合法，因为其类型不安全
-2 数组和泛型不能很好地混合（协变与不变的冲突），应避免混合使用数组和List<T>，优先使用List<T>，除非必要，且证明安全，否则不要使用SafeVarargs，每次使用SuppressWarnings
+2 数组和泛型不能很好地混合（协变与不变的冲突），应避免混合使用数组和List<T>，优先使用List<T>，除非必要，且证明安全，否则不要使用SafeVarargs
 
 # 优先使用泛型
 优先使用泛型系统，以保证类型的安全性和可读性，必须要混合数组与泛型时，使用以下两种方法进行数组创建，elements = (E[]) new Object[DEFAULT_INITIAL_CAPACITY]; @SuppressWarnings("unchecked") E result =(E) elements[--size];
